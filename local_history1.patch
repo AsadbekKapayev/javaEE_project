@@ -1,0 +1,28 @@
+Index: src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java b/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java
+--- a/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java	(date 1647007675529)
++++ b/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java	(date 1647007675529)
+@@ -43,12 +43,13 @@
+         out.println("<form action=\"add-dvd.do\" method=\"post\">\n");
+ 
+         String paramTitle = req.getParameter("title");
+-        if ( paramTitle == null ) {
+-            paramTitle = "";
+-        }
+-        out.print(" Title: <input type='text' name='title'");
+-        out.print(" value='" + paramTitle + "'>");
+-        out.println("<br/>");
++        out.println("<label for=\"title\">Title: </label>\n");
++        if (paramTitle == null) {
++            out.println("<input type=\"text\" id=\"title\" name=\"title\"><br>\n");
++        } else {
++            out.print("<input type='text' name='title'");
++            out.print(" value='" + paramTitle + "'>");
++        }
+ 
+         param = req.getParameter("year");
+         out.println("<label for=\"year\">Year: </label>\n");

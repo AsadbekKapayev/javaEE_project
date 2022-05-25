@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="dvdlibrary">
+  <database-model serializer="dbm" dbms="DERBY" family-id="DERBY" format-version="4.38">
+    <root id="1">
+      <ServerVersion>10.15.2.0</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="APP"/>
+    <schema id="3" parent="1" name="NULLID"/>
+    <schema id="4" parent="1" name="SQLJ"/>
+    <schema id="5" parent="1" name="SYS"/>
+    <schema id="6" parent="1" name="SYSCAT"/>
+    <schema id="7" parent="1" name="SYSCS_DIAG"/>
+    <schema id="8" parent="1" name="SYSCS_UTIL"/>
+    <schema id="9" parent="1" name="SYSFUN"/>
+    <schema id="10" parent="1" name="SYSIBM"/>
+    <schema id="11" parent="1" name="SYSPROC"/>
+    <schema id="12" parent="1" name="SYSSTAT"/>
+    <schema id="13" parent="1" name="EXAMPLE"/>
+    <table id="14" parent="13" name="ITEM"/>
+    <table id="15" parent="13" name="OBJECTIDS"/>
+    <column id="16" parent="14" name="ID">
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="17" parent="14" name="USERNAME">
+      <DataType>VARCHAR(20)|12s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="18" parent="14" name="TITLE">
+      <DataType>VARCHAR(100)|12s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="19" parent="14" name="year">
+      <DataType>CHAR(4)|1s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="20" parent="14" name="GENRE">
+      <DataType>VARCHAR(20)|12s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <index id="21" parent="14" name="SQL0000000001-b1c6c08e-0180-4fd0-adc2-0000076097c8">
+      <ColNames>ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="22" parent="14" name="SQL0000000001-b1c6c08e-0180-4fd0-adc2-0000076097c8">
+      <ColNames>ID</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>SQL0000000001-b1c6c08e-0180-4fd0-adc2-0000076097c8</UnderlyingIndexName>
+    </key>
+    <column id="23" parent="15" name="TABLE_NAME">
+      <DataType>VARCHAR(30)|12s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="24" parent="15" name="ID">
+      <DataType>INTEGER|4s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <index id="25" parent="15" name="SQL0000000000-e8d54087-0180-4fd0-adc2-0000076097c8">
+      <ColNames>TABLE_NAME</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="15" name="SQL0000000000-e8d54087-0180-4fd0-adc2-0000076097c8">
+      <ColNames>TABLE_NAME</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>SQL0000000000-e8d54087-0180-4fd0-adc2-0000076097c8</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>

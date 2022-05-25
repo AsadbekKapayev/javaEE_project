@@ -1,0 +1,91 @@
+Index: src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java b/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java
+--- a/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java	(date 1647007675529)
++++ b/src/main/java/com/example/javaEEproject/view/AddDVDFormServlet.java	(date 1647007675529)
+@@ -23,6 +23,7 @@
+     @Override
+     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+         List<String> errors = (List)req.getAttribute("errors");
++        String param = "";
+         String pageTitle = "Add DVD";
+         response.setContentType("text/html");
+         PrintWriter out = response.getWriter();
+@@ -39,34 +40,57 @@
+ 
+         out.println("<h1>" + pageTitle + "</h1>");
+ 
+-        if (!errors.isEmpty()) {
+-            out.println("<p>Please correct the following errors: </p>");
+-            for (String error: errors) {
+-                out.println("<p>" + error);
+-                out.println("</p>");
+-            }
++        out.println("<form action=\"add-dvd.do\" method=\"post\">\n");
++
++        String paramTitle = req.getParameter("title");
++        out.println("<label for=\"title\">Title: </label>\n");
++        if (paramTitle == null) {
++            out.println("<input type=\"text\" id=\"title\" name=\"title\"><br>\n");
++        } else {
++            out.print("<input type='text' name='title'");
++            out.print(" value='" + paramTitle + "'>");
++        }
++
++        param = req.getParameter("year");
++        out.println("<label for=\"year\">Year: </label>\n");
++        if (param == null) {
++            out.println("<input type=\"text\" id=\"year\" name=\"year\"><br>\n");
+         } else {
+-            out.println("<p>t</p>");
++            out.println("<input type=\"text\" id=\"year\" name\"year\" value=\"" + param + "\"><br>");
+         }
+ 
+-        out.println("<form action=\"add-dvd.do\" method=\"post\">\n" +
+-                "    <label for=\"title\">Title: </label>\n" +
+-                "    <input type=\"text\" id=\"title\" name=\"title\"><br>\n" +
+-                "    <label for=\"year\">Year: </label>\n" +
+-                "    <input type=\"text\" id=\"year\" name=\"year\"><br>\n" +
+-                "    <label for=\"genres\">Genre: </label>\n");
++        param = req.getParameter("genres");
+         out.println("<select name=\"genres\" id=\"genres\">\n");
+         for (String genre: genres) {
+-            out.println("<option value=\"" + genre + "\">" + genre + "</option>\n");
++            out.println("<option ");
++            if (genre.equals(param)) {
++                out.println(" selected");
++            }
++            out.println(">" + genre + "</option>\n");
+         }
+         out.println("</select>\n");
+ 
+-        out.println( "    <label for=\"genre\"> or new genre: </label>\n" +
+-                "    <input type=\"text\" id=\"genre\" name=\"genre\">\n" +
+-                "    <input type=\"submit\" value=\"Add DVD\">\n" +
++        param = req.getParameter("genre");
++        out.println("<label for=\"title\">or new genre: </label>\n");
++        if (param == null) {
++            out.println("<input type=\"text\" id=\"genre\" name=\"genre\"><br>\n");
++        } else {
++            out.println("<input type=\"text\" id=\"genre\" name\"genre\" value=\"" + param + "\"><br>");
++        }
++
++        out.println("    <input type=\"submit\" value=\"Add DVD\">\n" +
+                 "</form>");
+ 
+ 
++
++        if (!errors.isEmpty()) {
++            out.println("<p>Please correct the following errors: </p>");
++            for (String error: errors) {
++                out.println("<p>" + error);
++                out.println("</p>");
++            }
++        }
++
+         out.println("</body>");
+         out.println("</html>");
+ 
